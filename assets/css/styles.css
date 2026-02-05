@@ -1,253 +1,280 @@
 /* =========================
-   Design tokens
-   ========================= */
-   :root {
-    --color-bg: #f9fafb;
-    --color-surface: #ffffff;
-    --color-primary: #0f172a;
-    --color-secondary: #475569;
-    --color-accent: #2563eb;
-    --color-border: #e2e8f0;
-  
-    --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-                 Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  
-    --font-size-sm: 0.875rem;
-    --font-size-md: 1rem;
-    --font-size-lg: 1.25rem;
-    --font-size-xl: 1.75rem;
-    --font-size-xxl: 2.25rem;
-  
-    --radius-sm: 4px;
-    --radius-md: 8px;
-  
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 1.5rem;
-    --space-lg: 2.5rem;
-    --space-xl: 4rem;
+   RESET
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   BASE
+========================= */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+
+  /* Fondo global: azul oscuro */
+  background-color: #0f172a;
+
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+/* =========================
+   HERO / HEADER
+   (imagen SOLO acá)
+========================= */
+.hero {
+  position: relative;
+  height: 340px;
+
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Overlay azul oscuro */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.75);
+}
+
+/* Contenido del hero */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: #f8fafc;
+  padding: 0 1rem;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+/* =========================
+   BOTÓN CV
+========================= */
+.btn-download {
+  margin-top: 1.6rem;
+  padding: 0.75rem 1.5rem;
+
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.btn-download:hover {
+  background-color: #1d4ed8;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.container {
+  max-width: 900px;
+  margin: 2.8rem auto;
+  padding: 2.2rem 1.6rem;
+
+  background-color: #111827; /* panel sobre fondo */
+  border-radius: 8px;
+}
+
+/* =========================
+   SECCIONES
+========================= */
+section {
+  margin-bottom: 3rem;
+}
+
+section:last-child {
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+
+  border-bottom: 2px solid #1e293b;
+  padding-bottom: 0.4rem;
+  color: #f1f5f9;
+}
+
+/* =========================
+   SKILLS
+========================= */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skill {
+  padding: 0.4rem 0.8rem;
+  border-radius: 14px;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* ===== SKILLS BASADAS EN VALIDACIONES ===== */
+
+.sql {
+  background-color: #2563eb;
+}
+
+.cobol {
+  background-color: #1e40af;
+}
+
+.db2 {
+  background-color: #1d4ed8;
+}
+
+.cics {
+  background-color: #1e3a8a;
+}
+
+.mainframe {
+  background-color: #1e3a8a;
+}
+
+.qa-manual {
+  background-color: #475569;
+}
+
+.analysis {
+  background-color: #334155;
+}
+
+.jcl {
+  background-color: #0f766e;
+}
+
+.python {
+  background-color: #3572a5;
+}
+
+.automation {
+  background-color: #16a34a;
+}
+
+.rpa {
+  background-color: #15803d;
+}
+
+.api {
+  background-color: #0ea5e9;
+}
+
+.integration {
+  background-color: #0284c7;
+}
+
+.batch {
+  background-color: #475569;
+}
+
+.jira {
+  background-color: #0052cc;
+}
+
+.functional {
+  background-color: #64748b;
+}
+
+/* =========================
+   EXPERIENCIA
+========================= */
+.job {
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.6rem;
+
+  border-bottom: 1px solid #1e293b;
+}
+
+.job:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.job h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #f8fafc;
+}
+
+.job-date {
+  display: block;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 0.6rem;
+}
+
+.job p {
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 1.8rem 1rem;
+
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .hero {
+    height: 260px;
   }
-  
-  /* =========================
-     Reset & base
-     ========================= */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+
+  .hero h1 {
+    font-size: 2.1rem;
   }
-  
-  body {
-    margin: 0;
-    font-family: var(--font-base);
-    background-color: var(--color-bg);
-    color: var(--color-primary);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
+
+  .hero h2 {
+    font-size: 1.05rem;
   }
-  
-  /* =========================
-     Header
-     ========================= */
-  .site-header {
-    background-color: var(--color-primary);
-    color: #fff;
-    padding: var(--space-xl) var(--space-sm);
-    text-align: center;
+
+  .container {
+    margin: 2rem auto;
+    padding: 1.6rem 1.2rem;
   }
-  
-  .site-header h1 {
-    font-size: var(--font-size-xxl);
-    margin-bottom: var(--space-xs);
-    letter-spacing: -0.02em;
-  }
-  
-  .subtitle {
-    font-size: var(--font-size-md);
-    color: #cbd5f5;
-  }
-  
-  /* =========================
-     Header actions
-     ========================= */
-  .header-actions {
-    margin-top: var(--space-md);
-  }
-  
-  .primary-btn {
-    background-color: var(--color-accent);
-    color: #fff;
-    border: none;
-    padding: 0.6rem 1.3rem;
-    font-size: var(--font-size-sm);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    font-weight: 600;
-  }
-  
-  .primary-btn:hover {
-    opacity: 0.9;
-  }
-  
-  /* =========================
-     Layout
-     ========================= */
-  .content {
-    max-width: 960px;
-    margin: calc(var(--space-xl) * -0.5) auto 0;
-    padding: 0 var(--space-sm);
-  }
-  
-  /* =========================
-     Sections (cards)
-     ========================= */
-  .section {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-lg);
-    margin-bottom: var(--space-lg);
-  
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  
-  .section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .section h2 {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--space-md);
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: var(--space-xs);
-  }
-  
-  /* =========================
-     Text
-     ========================= */
-  p {
-    margin-bottom: var(--space-sm);
-    color: var(--color-secondary);
-  }
-  
-  p:last-child {
-    margin-bottom: 0;
-  }
-  
-  /* =========================
-     Experience
-     ========================= */
-  .experience {
-    margin-bottom: var(--space-md);
-  }
-  
-  .experience h3 {
-    font-size: var(--font-size-md);
-    margin-bottom: 0.2rem;
-  }
-  
-  .role {
-    display: block;
-    font-size: var(--font-size-sm);
-    color: var(--color-secondary);
-    margin-bottom: var(--space-xs);
-  }
-  
-  /* =========================
-     Skills
-     ========================= */
-  .skills {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    padding: 0;
-    margin: 0;
-  }
-  
-  .skills li {
-    background-color: #f1f5f9;
-    border: 1px solid var(--color-border);
-    padding: 0.35rem 0.6rem;
-    border-radius: var(--radius-sm);
-    font-size: var(--font-size-sm);
-    white-space: nowrap;
-  }
-  
-  /* =========================
-     Links
-     ========================= */
-  a {
-    color: var(--color-accent);
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* =========================
-     Footer
-     ========================= */
-  .site-footer {
-    text-align: center;
-    margin-top: var(--space-xl);
-    padding: var(--space-md);
-    font-size: var(--font-size-sm);
-    color: var(--color-secondary);
-  }
-  
-  /* =========================
-     Dark mode
-     ========================= */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-bg: #020617;
-      --color-surface: #020617;
-      --color-primary: #e5e7eb;
-      --color-secondary: #94a3b8;
-      --color-border: #1e293b;
-    }
-  
-    .site-header {
-      background-color: #020617;
-    }
-  
-    .skills li {
-      background-color: #020617;
-    }
-  }
-  
-  /* =========================
-     Print / PDF
-     ========================= */
-  @media print {
-    body {
-      background: #fff;
-      color: #000;
-    }
-  
-    .site-header,
-    .site-footer,
-    .header-actions {
-      display: none;
-    }
-  
-    .section {
-      border: none;
-      padding: 0;
-      margin-bottom: 1.5rem;
-      page-break-inside: avoid;
-      opacity: 1;
-      transform: none;
-    }
-  
-    a::after {
-      content: " (" attr(href) ")";
-      font-size: 0.8em;
-    }
-  }  
+}
