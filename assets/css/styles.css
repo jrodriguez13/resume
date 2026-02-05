@@ -1,69 +1,195 @@
-* {
+/* =========================
+   Design tokens
+   ========================= */
+   :root {
+    --color-bg: #f9fafb;
+    --color-surface: #ffffff;
+    --color-primary: #0f172a;
+    --color-secondary: #475569;
+    --color-accent: #2563eb;
+    --color-border: #e2e8f0;
+  
+    --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  
+    --font-size-base: 16px;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.75rem;
+    --font-size-xxl: 2.25rem;
+  
+    --radius-sm: 4px;
+    --radius-md: 8px;
+  
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+  }
+  
+  /* =========================
+     Reset & base
+     ========================= */
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  }
+  
+  html {
+    font-size: var(--font-size-base);
   }
   
   body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #f5f7fa;
-    color: #222;
-    line-height: 1.6;
+    margin: 0;
+    font-family: var(--font-base);
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
   
+  /* =========================
+     Layout
+     ========================= */
   .site-header {
-    background-color: #1f2933;
+    background-color: var(--color-primary);
     color: #fff;
-    padding: 2rem 1rem;
+    padding: var(--space-xl) var(--space-sm);
     text-align: center;
   }
   
+  .site-header h1 {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-xs);
+  }
+  
   .subtitle {
-    opacity: 0.8;
+    font-size: var(--font-size-md);
+    color: #cbd5f5;
   }
   
   .content {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 960px;
+    margin: calc(var(--space-xl) * -0.5) auto 0;
+    padding: 0 var(--space-sm);
   }
   
+  /* =========================
+     Card-based sections
+     ========================= */
   .section {
-    margin-bottom: 2.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
   }
   
   .section h2 {
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 0.5rem;
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--color-border);
+    letter-spacing: -0.01em;
   }
   
+  /* =========================
+     Text elements
+     ========================= */
+  p {
+    margin-bottom: var(--space-sm);
+    color: var(--color-secondary);
+  }
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* =========================
+     Experience
+     ========================= */
   .experience {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-md);
+  }
+  
+  .experience:last-child {
+    margin-bottom: 0;
+  }
+  
+  .experience h3 {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: var(--color-primary);
   }
   
   .role {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: var(--font-size-sm);
+    color: var(--color-secondary);
+    margin-bottom: var(--space-xs);
+    display: block;
   }
   
+  /* =========================
+     Skills
+     ========================= */
   .skills {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: var(--space-xs);
+    padding: 0;
+    margin: 0;
   }
   
   .skills li {
-    background-color: #e5e7eb;
-    padding: 0.4rem 0.7rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    background-color: #f1f5f9;
+    border: 1px solid var(--color-border);
+    padding: 0.35rem 0.6rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    white-space: nowrap;
   }
   
+  /* =========================
+     Links
+     ========================= */
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* =========================
+     Footer
+     ========================= */
   .site-footer {
+    margin-top: var(--space-xl);
+    padding: var(--space-md);
     text-align: center;
-    padding: 1.5rem;
-    font-size: 0.85rem;
-    color: #666;
+    font-size: var(--font-size-sm);
+    color: var(--color-secondary);
+  }
+  
+  /* =========================
+     Responsive tweaks
+     ========================= */
+  @media (max-width: 640px) {
+    .site-header h1 {
+      font-size: 1.9rem;
+    }
+  
+    .section {
+      padding: var(--space-md);
+    }
   }  
